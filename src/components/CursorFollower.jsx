@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
-const CursorFollower = () => {
+const CursorFollower = ({ cursorVariant }) => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -16,17 +17,23 @@ const CursorFollower = () => {
     };
   }, []);
 
+  const variants = {
+    default: {
+      x: cursorPosition.x - 5,
+      y: cursorPosition.y - 5,
+    },
+    onenter: {
+      height: 100,
+      width: 100,
+      x: cursorPosition.x - 50,
+      y: cursorPosition.y - 50,
+    },
+  };
+
   return (
-    <div
-      className="cursor-follower"
-      style={{
-        position: 'fixed',
-        left: cursorPosition.x,
-        top: cursorPosition.y,
-        transform: 'translate(-50%, -50%)',
-        transition: 'transform 0.2s ease-out',
-      }}
-    />
+    <motion.div className="cursor-follower flex items-center justify-center" variants={variants} animate={cursorVariant}>
+      {cursorVariant === 'onenter' && <div className="font-bold text-white">View</div>}
+    </motion.div>
   );
 };
 

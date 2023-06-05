@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+.cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  z-index: 100;
+  background: linear-gradient(90deg, #137ffc 0%, #f94f5a 50%, #137ffc);
+  pointer-events: none;
+}
+
 .navbar-section {
   position: fixed;
   top: 0;
@@ -286,6 +298,22 @@
 
 /* Inner Page */
 
+.icon-bounce:hover {
+  animation: icon-bounce 0.8s ease-out infinite;
+}
+
+@keyframes icon-bounce {
+  0%, 100%, 20%, 50%, 80% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
 .inner-bg {
   background-image: url('./assets/inner-bg.webp');
   background-size: cover;
@@ -318,14 +346,6 @@
   transform: translateX(0);
 }
 
-.cursor-follower {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  z-index: 100;
-  background: linear-gradient(90deg, #137ffc 0%, #f94f5a 50%, #137ffc);
-  pointer-events: none; /* Ensures the div doesn't interfere with underlying elements */
-}
 
 
 /* Dragable Components */
@@ -416,4 +436,15 @@
 .thx-footer-btn a:hover {
   background-position: 120%;
   color: #fff;
+}
+
+.black-wrapper:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+  z-index: 2;
 }

@@ -1,6 +1,5 @@
 import './App.css'
 import Banner from './components/Banner/Banner'
-import CursorFollower from './components/CursorFollower'
 import Demo from './components/Demo/Demo'
 import Footer from './components/Footer/Footer'
 import InnerPages from './components/InnerPages/InnerPages'
@@ -27,7 +26,6 @@ function App() {
       <Testimonials />
       <Support />
       <Footer />
-      <CursorFollower />
     </>
   )
 }

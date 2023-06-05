@@ -1,7 +1,14 @@
 import sectionHead from "../../constants/sectionDemo"
 import DemoProjects from "../../constants/DemoProjects"
+import CursorFollower from "../CursorFollower"
+import { useState } from "react"
+
 
 const Demo = () => {
+    const [isHovered, setIsHovered] = useState(false);
+
+    const handleMouseEnter = () => setIsHovered(true);
+    const handleMouseLeave = () => setIsHovered(false);
 
     return (
         <div className="bg-white lg:pt-80">
@@ -22,13 +29,13 @@ const Demo = () => {
             </div>
             <div className="flex flex-col m-6 lg:grid items-center justify-center grid-cols-3 gap-6 p-2 lg:p-20">
                 {DemoProjects.map((item) => (
-                    <div className="project-container group relative cursor-pointer hover:transform hover:-translate-y-3 hover:shadow-lg" key={item.index}>
+                    <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className="project-container group relative cursor-pointer hover:transform hover:-translate-y-3 hover:shadow-lg" key={item.index}>
                         <div className="dot-style absolute top-0 left-4">
                             <i className="inline-block mr-[3px] rounded-full bg-[#ecedec] w-[6px] h-[6px]"></i>
                             <i className="inline-block mr-[3px] rounded-full bg-[#ecedec] w-[6px] h-[6px]"></i>
                             <i className="inline-block mr-[3px] rounded-full bg-[#ecedec] w-[6px] h-[6px]"></i>
                         </div>
-                        <div className="flex justify-end relative project-wrapper">
+                        <div className="black-wrapper flex justify-end relative project-wrapper">
                             <div className="absolute shadow-lg">
                                 <img src={item.backImg} alt="" />
                             </div>
@@ -43,6 +50,7 @@ const Demo = () => {
                     </div>
                 ))}
             </div>
+            {isHovered ? <CursorFollower cursorVariant='onenter' /> : <CursorFollower cursorVariant='default'/>}
         </div>
     )
 }
