@@ -43,7 +43,7 @@ const InnerPages = () => {
                 <div className={`${isVisible ? 'fade-in-up' : ''} flex flex-col lg:flex-row gap-5 items-center justify-between`}>
                     {innerFeatures.map((item, index) => (
                         <div key={index} className="flex w-full lg:w-[25%]">
-                            <div className="flex items-center justify-center rounded-full mr-6 bg-white w-20 h-20 p-4">
+                            <div className="icon-bounce flex items-center justify-center rounded-full mr-6 bg-white w-20 h-20 p-4">
                                 <img src={item.icon} alt="" />
                             </div>
                             <div className="flex items-center justify-center font-bold text-lg max-w-[110px]">
