@@ -2,13 +2,19 @@ import InnerOne from '../../assets/innerone.jpg'
 import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
-import React from 'react'
-
 const Dragable = () => {
+
+    const [width, setWidth] = useState(0);
+    const carousel = useRef();
+
+    useEffect(() => {
+        console.log(carousel.current.scrollWidth)
+    },[])
+
   return (
     <div>
-        <motion.div className='carousel'>
-            <motion.div drag='x' dragElastic={0.5} className='inner-carousel'>
+        <motion.div ref={carousel} className='carousel'>
+            <motion.div drag='x' dragConstraints={{right: 0}} dragElastic={0.5} className='inner-carousel'>
                 <motion.div className='item'>
                     <img src={InnerOne} alt="" />
                 </motion.div>

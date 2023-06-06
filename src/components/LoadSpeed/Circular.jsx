@@ -1,19 +1,21 @@
-import React, { useEffect } from 'react';
+import { useEffect, useRef} from 'react';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 
-const CircularProgressBar = ({ percentage, maxPercentage }) => {
-  const circleRef = React.useRef(null);
+const CircularProgressBar = ({ percentage, maxPercentage, animate }) => {
+  const circleRef = useRef(null);
   const circumference = 2 * Math.PI * 54;
   const offset = (100 - percentage) / 100 * circumference;
 
   const control = useAnimation();
 
   useEffect(() => {
-    control.start({
-      strokeDashoffset: offset,
-      transition: { duration: 1, ease: 'linear' }
-    });
-  }, [offset, control]);
+    if (animate) {
+      control.start({
+        strokeDashoffset: offset,
+        transition: { duration: 1, ease: 'linear' }
+      });
+    }
+  }, [offset, animate, control]);
 
   return (
     <svg width="215" height="215" viewBox="0 0 120 120">
