@@ -19,8 +19,8 @@ const CursorFollower = ({ cursorVariant }) => {
 
   const variants = {
     default: {
-      x: cursorPosition.x - 5,
-      y: cursorPosition.y - 5,
+      x: cursorPosition.x - 6,
+      y: cursorPosition.y - 6,
     },
     onenter: {
       height: 100,
